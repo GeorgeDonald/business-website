@@ -1,0 +1,85 @@
+$clr_bkgrnd: rgb(162,162,248);
+$clr_bkgrnd_banner: rgb(62,62,248);
+$bodywidth: 800px;
+$headerheight: 120px;
+$headbannerheight: 80px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+}
+
+body {
+  background-color: $clr_bkgrnd;
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  height: $headerheight;
+  left: 0;
+  top: 0;
+  background-color: $clr_bkgrnd_banner;
+  overflow: hidden;
+}
+
+header > *, article, footer {
+  width: $bodywidth;
+  left: calc((100vw - #{$bodywidth}) / 2);
+}
+
+header > * {
+  display: block;
+  position: fixed;
+  color: white;
+}
+
+.head_banner {
+  height: $headbannerheight;
+  top: 0;
+}
+
+.header_banner_item {
+  display: inline-block;
+  height: $headbannerheight;
+  top: 0;
+}
+
+#company_name p {
+  line-height: $headbannerheight;
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
+#logo img {
+  width: $headbannerheight;
+  background-size: 100% 100%;
+}
+
+#time {
+  right: 0;
+  float:right;
+  font-family: sans-serif;
+  font-size: 1.5em;
+}
+
+.head_nav {
+  height: calc(#{$headerheight} - #{$headbannerheight});
+  top: $headbannerheight;
+  nav a {
+    margin-left: 15px;
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: white;
+  }
+}
+
+article, footer {
+  position: relative;
+}
+
+article {
+  margin-top: $headerheight;
+}

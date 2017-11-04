@@ -68,18 +68,53 @@ header > * {
 .head_nav {
   height: calc(#{$headerheight} - #{$headbannerheight});
   top: $headbannerheight;
-  nav a {
-    margin-left: 15px;
-    font-size: 1.5em;
-    margin-right: 15px;
+}
+
+.nav_tag {
+  display: inline-block;
+  font-size: 1.5em;
+  background-color: rgb(32,32,150);
+  text-align: center;
+  width: 160px;
+  height: 100%;
+  line-height: calc(#{$headerheight} - #{$headbannerheight});
+  a {
+    text-decoration: none;
     color: white;
   }
 }
 
 article, footer {
+  display: block;
   position: relative;
 }
 
 article {
   margin-top: $headerheight;
+}
+
+.art-content {
+  color: white;
+  font-family: monospace;
+  font-size: 1.5em;
+  p {
+    text-indent: 15px;
+  }
+}
+
+.art-content img{
+  float: left;
+  clear: right;
+  width: 150px;
+  height: 150px;
+  background-size: 100% 100%;
+}
+
+.grid_products {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  .products_list {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
 }

@@ -1,1 +1,32 @@
-<h1>Contact goes here</h1>
+<div class="grid_products">
+  <div class="products_list">
+    <% itemclass="product_item"
+      if params['id'] == nil || params['id'] == 'info'
+        itemclass="product_item_select"
+      end
+      item = "<div class=\"#{itemclass}\"><a href=\"/contact?id=info\">
+          Contact Information</a></div>" %>
+    <%= item %>
+
+    <% itemclass="product_item"
+      if params['id'] == 'email'
+        itemclass="product_item_select"
+      end
+      item = "<div class=\"#{itemclass}\"><a href=\"/contact?id=email\">
+          E-Mail us</a></div>" %>
+    <%= item %>
+  </div>
+  <div class="products_details">
+    <% if params['id'] == nil || params['id'] == 'info' %>
+      <h1>Contact Information</h1>
+      <p>Tel: (123) 456-7890</p>
+      <p>Fax: (123) 456-7890</p>
+      <p>e-mail: anyone@anywhere.any</p>
+    <% elsif params['id'] == 'email' %>
+      <h1>E-Mail us: </h1>
+      <p></p>
+      <p></p>
+      <p></p>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 
 var elTime = document.getElementById('time');
-setInterval(()=>{
+function updateTime(){
   elTime.innerHTML = (new Date).toLocaleString();
-},1000);
+}
+window.onload=function(){
+updateTime();
+setInterval(updateTime,1000);
+};

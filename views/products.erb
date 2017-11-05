@@ -23,7 +23,7 @@ end
 <div class="grid_products">
   <div class="products_list">
     <% doc.each_with_index { |p, i|
-        item = "<div><a href=\"/products?id=#{p.css('id').inner_html}\">
+        item = "<div class=\"product_item\"><a href=\"/products?id=#{p.css('id').inner_html}\">
           #{p.css('name').inner_html}</a></div>"%>
         <%= item %>
         <% if (params['id'] == nil && i == 0) || (params['id'] == p.css('id').inner_html)
@@ -37,11 +37,11 @@ end
   </div>
   <div class="products_details">
     <% if img != nil %>
-    <%= "<img src=#{img} class=\"product_img\"" %>
+    <%= "<img src=#{img} class=\"product_img\" />" %>
     <% end %>
     <%= "<p class=\"product_name\">#{name}</p>" %>
     <% if dtl != nil %>
-    <%= "<div class=\"product_datails\">#{dtl}</div>" %>
+    <%= "<div class=\"product_details\">#{dtl}</div>" %>
     <% end %>
   </div>
 </div>

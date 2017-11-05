@@ -86,6 +86,13 @@ article {
   height: 150px;
   background-size: 100% 100%; }
 
+.product_img {
+  float: right;
+  clear: left;
+  width: 150px;
+  height: 150px;
+  background-size: 100% 100%; }
+
 .grid_products {
   display: grid;
   grid-template-columns: 20% 1fr; }

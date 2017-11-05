@@ -1,29 +1,51 @@
 
 <%
+doc = nil
 begin
 file = File.open("products.xml")
 doc =  Nokogiri::XML(file)
-%>
-<%= params['id'] %>
-<div class="grid_products">
-  <div class="products_list">
-    <% doc.xpath("//product").each { |p|
-      item = "<div> <a href=\"/products?id=" +
-        p.css('id').inner_html +
-        "\">" + p.css('name').inner_html + "</a></div>"
-    %>
-    <%= item %>
-    <% } %>
-  </div>
-  <div class="products_details">
-  </div>
-</div>
-
-<%
+doc = doc.xpath("//product")
+if doc.length == 0 then raise 'no product' end
 rescue
 %>
 <p>We have no product yet.</p>
 <p>Click "Edit" to add some products.</p>
 <%
+doc = nil
+end
+%>
+
+<% if doc != nil
+    dtl = nil
+    img = nil
+    name = nil
+%>
+<div class="grid_products">
+  <div class="products_list">
+    <% doc.each_with_index { |p, i|
+        item = "<div><a href=\"/products?id=#{p.css('id').inner_html}\">
+          #{p.css('name').inner_html}</a></div>"%>
+        <%= item %>
+        <% if (params['id'] == nil && i == 0) || (params['id'] == p.css('id').inner_html)
+            img = p.css('image').inner_html
+            dtl = p.css('details').inner_html
+            dtl = dtl.gsub(/&lt;/,'<')
+            dtl = dtl.gsub(/&gt;/,'>')
+            name = p.css('name').inner_html
+           end %>
+    <% } %>
+  </div>
+  <div class="products_details">
+    <% if img != nil %>
+    <%= "<img src=#{img} class=\"product_img\"" %>
+    <% end %>
+    <%= "<p class=\"product_name\">#{name}</p>" %>
+    <% if dtl != nil %>
+    <%= "<div class=\"product_datails\">#{dtl}</div>" %>
+    <% end %>
+  </div>
+</div>
+<%
+file.close
 end
 %>

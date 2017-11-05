@@ -1,6 +1,24 @@
+
+<%
+begin
+doc = File.open("products.xml") { |f| Nokogiri::XML(f) }
+%>
+<%= doc %>
+<%= params['id'] %>
 <div class="grid_products">
   <div class="products_list">
+    <a href="/products?id=1">Will this post?</a>
   </div>
   <div class="products_details">
   </div>
 </div>
+
+<%
+rescue
+%>
+<p>We have no product yet.</p>
+<p>Click "Edit" to add some products.</p>
+<%= Dir.pwd %>
+<%
+end
+%>

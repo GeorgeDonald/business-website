@@ -22,17 +22,19 @@ end
 %>
 <div class="grid_products">
   <div class="products_list">
-    <% doc.each_with_index { |p, i|
-        item = "<div class=\"product_item\"><a href=\"/products?id=#{p.css('id').inner_html}\">
-          #{p.css('name').inner_html}</a></div>"%>
-        <%= item %>
-        <% if (params['id'] == nil && i == 0) || (params['id'] == p.css('id').inner_html)
-            img = p.css('image').inner_html
-            dtl = p.css('details').inner_html
-            dtl = dtl.gsub(/&lt;/,'<')
-            dtl = dtl.gsub(/&gt;/,'>')
-            name = p.css('name').inner_html
-           end %>
+    <% doc.each_with_index { |p, i| %>
+      <% itemclass="product_item"
+        if (params['id'] == nil && i == 0) || (params['id'] == p.css('id').inner_html)
+          img = p.css('image').inner_html
+          dtl = p.css('details').inner_html
+          dtl = dtl.gsub(/&lt;/,'<')
+          dtl = dtl.gsub(/&gt;/,'>')
+          name = p.css('name').inner_html
+          itemclass="product_item_select"
+         end %>
+      <% item = "<div class=\"#{itemclass}\"><a href=\"/products?id=#{p.css('id').inner_html}\">
+        #{p.css('name').inner_html}</a></div>"%>
+      <%= item %>
     <% } %>
   </div>
   <div class="products_details">

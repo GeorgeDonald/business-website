@@ -65,6 +65,9 @@ header > * {
     text-decoration: none;
     color: white; }
 
+.nav_tag_cur {
+  background-color: #3e3ef8; }
+
 article, footer {
   display: block;
   position: relative; }
@@ -105,12 +108,19 @@ article {
   margin-top: 8px;
   margin-bottom: 8px; }
 
-.product_item a {
-  text-decoration: none;
-  font-size: 1.5em;
-  font-family: fantasy;
-  padding-top: 8px;
-  padding-bottom: 8px; }
+.product_item, .product_item_select {
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px; }
+  .product_item a, .product_item_select a {
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: fantasy; }
+
+.product_item_select {
+  background-color: #202096; }
+  .product_item_select a {
+    color: white; }
 
 .grid_products {
   display: grid;

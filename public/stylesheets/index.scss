@@ -1,5 +1,6 @@
 $clr_bkgrnd: rgb(162,162,248);
 $clr_bkgrnd_banner: rgb(62,62,248);
+$clr_navtag: rgb(32,32,150);
 $bodywidth: 800px;
 $headerheight: 120px;
 $headbannerheight: 80px;
@@ -73,7 +74,7 @@ header > * {
 .nav_tag {
   display: inline-block;
   font-size: 1.5em;
-  background-color: rgb(32,32,150);
+  background-color: $clr_navtag;
   text-align: center;
   width: 160px;
   height: 100%;
@@ -82,6 +83,10 @@ header > * {
     text-decoration: none;
     color: white;
   }
+}
+
+.nav_tag_cur {
+  background-color: $clr_bkgrnd_banner;
 }
 
 article, footer {
@@ -132,13 +137,21 @@ article {
   margin-bottom: 8px;
 }
 
-.product_item {
+.product_item, .product_item_select {
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
   a {
     text-decoration: none;
     font-size: 1.5em;
     font-family: fantasy;
-    padding-top: 8px;
-    padding-bottom: 8px;
+  }
+}
+
+.product_item_select {
+  background-color: $clr_navtag;
+  a {
+    color: white;
   }
 }
 

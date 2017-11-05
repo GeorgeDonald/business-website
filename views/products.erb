@@ -1,13 +1,19 @@
 
 <%
 begin
-doc = File.open("products.xml") { |f| Nokogiri::XML(f) }
+file = File.open("products.xml")
+doc =  Nokogiri::XML(file)
 %>
-<%= doc %>
 <%= params['id'] %>
 <div class="grid_products">
   <div class="products_list">
-    <a href="/products?id=1">Will this post?</a>
+    <% doc.xpath("//product").each { |p|
+      item = "<div> <a href=\"/products?id=" +
+        p.css('id').inner_html +
+        "\">" + p.css('name').inner_html + "</a></div>"
+    %>
+    <%= item %>
+    <% } %>
   </div>
   <div class="products_details">
   </div>
@@ -18,7 +24,6 @@ rescue
 %>
 <p>We have no product yet.</p>
 <p>Click "Edit" to add some products.</p>
-<%= Dir.pwd %>
 <%
 end
 %>

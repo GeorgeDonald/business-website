@@ -5,4 +5,10 @@
     <image>/img/adapter.jpg</image>
     <details>product descriptions</details>
   </product>
+  <product>
+    <id>2</id>
+    <name>Processor</name>
+    <image>/img/processor.jpg</image>
+    <details>product descriptions</details>
+  </product>
 </products>

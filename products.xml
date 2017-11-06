@@ -8,4 +8,4 @@
   </product>
 <product><id>2</id><name>Processor</name><image>/img/processor.jpg</image><details><p>Awesome. The most powerful processor in the world.</p>
 <p>What ever you input will display in products page</p>
-<p>Do you see that?</p></details></product></products>
+<p>Do you see that?</p></details></product><product><id>3</id><name>Software</name><image>/img/software.jpg</image><details>Great software.</details></product></products>

@@ -2,6 +2,10 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'Nokogiri'
 require 'sendgrid-ruby'
+require 'pry'
+#require 'mail'
+include SendGrid
+
 
 get '/' do
   erb :index

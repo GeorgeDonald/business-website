@@ -1,7 +1,28 @@
-<% errorinfo = nil %>
-<% if params[:send] != nil %>
+<%
+errorinfo = nil
+email_address = params[:email_address]
+email_subject = params[:email_subject]
+email_content = params[:email_content]
+%>
 
-<% end %>
+<% if params[:send] != nil
+      params[:id] = 'email';
+      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+      if !(email_address =~ VALID_EMAIL_REGEX)
+        errorinfo = "The e-mail address is not valid."
+      else
+        from = Email.new(email: email_address)
+        to = Email.new(email: 'dongsy326@comcast.net')
+        subject = email_subject
+        content = Content.new(type: 'text/plain', value: email_content)
+        mail = Mail.new(from, subject, to, content)
+
+        sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+        response = sg.client.mail._('send').post(request_body: mail.to_json)
+        errorinfo = response.status_code
+        #"Thank you for e-mail us. We will reply you ASAP."
+      end
+   end %>
 
 <div class="grid_products">
   <div class="products_list">
@@ -29,14 +50,18 @@
       <p>e-mail: anyone@anywhere.any</p>
     <% elsif params['id'] == 'email' %>
       <h1>E-Mail us: </h1>
-      <form action="/contact">
+      <form action="/contact" method="post">
+        <div class="emailform">
+          <label for="email_address">Your e-mail address: </label>
+          <%= "<input type=\"text\" name=\"email_address\" value=\"#{email_address}\" />" %>
+        </div>
         <div class="emailform">
           <label for="email_subject">Subject: </label>
-          <input type="text" name="email_subject" value="" />
+          <%= "<input type=\"text\" name=\"email_subject\" value=\"#{email_subject}\" />" %>
         </div>
         <div class="emailform">
           <label for="email_content">Content: </label>
-          <textarea name="email_content" rows="8" cols="80"></textarea>
+          <textarea name="email_content" rows="8" cols="80"><%= email_content %></textarea>
         </div>
         <input type="submit" name="send" value="Send">
       </form>

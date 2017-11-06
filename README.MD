@@ -12,4 +12,4 @@
 <p>Contact: you can select general contact information and email.</p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;In email, you can send email.</p>
 <p>Edit: you can add, delete or update product items.</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;When you done, go to Products to see results.</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;When you done, go to Products to see results. The information posted to server is saved in products.xml.</p>

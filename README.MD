@@ -7,7 +7,7 @@
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;source ./sendgrid.env</p>
 <br/>
 <p>There are four menu items:</p>
-<p>HOME:</p>
+<p>HOME: a demo introduction.</p>
 <p>Products: show products list and when you select one, the details</p>
 <p>Contact: you can select general contact information and email.</p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;In email, you can send email.</p>

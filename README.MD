@@ -2,9 +2,9 @@
 Please run "bundle install" in project directory command line first.
 
 Please apply a SendGrid api key and did this in project directory:
-      echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
-      echo "sendgrid.env" >> .gitignore
-      source ./sendgrid.env
+      <p>echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env</p>
+      <p>echo "sendgrid.env" >> .gitignore</p>
+      <p>source ./sendgrid.env</p>
 
 There are four menu items:
 HOME:

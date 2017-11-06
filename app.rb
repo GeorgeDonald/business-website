@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'Nokogiri'
+require 'sendgrid-ruby'
 
 get '/' do
   erb :index
@@ -11,6 +12,10 @@ get '/products' do
 end
 
 get '/contact' do
+  erb :contact
+end
+
+post '/contact' do
   erb :contact
 end
 

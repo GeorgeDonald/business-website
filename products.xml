@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <products>
-  <product>
+  <product name="Adapter" image="/img/adapter.jpg" descript="this is a great adapter. it can translate 110V to 220V" details="I modified this description">
     <id>1</id>
     <name>Adapter</name>
     <image>/img/adapter.jpg</image>
-    <details>asdf asfdas dfasd,fasdf afa; dfjasd;fkajdf;</details>
+    <details>I modified this description. this is a great adapter. it can transform 110V to 220V.</details>
   </product>
-</products>
+<product><id>2</id><name>Processor</name><image>/img/processor.jpg</image><details><p>Awesome. The most powerful processor in the world.</p>
+<p>What ever you input will display in products page</p>
+<p>Do you see that?</p></details></product></products>

@@ -58,7 +58,6 @@ if params[:commit] != nil
       params[:descript].gsub(/>/,'&gt;')
       node_pro.add_child("<details>#{params[:descript]}</details>")
       params['id'] = id.to_s
-      params['name'] = ""
 
       file =File.open("products.xml","w+")
       rootdoc.write_xml_to(file)
@@ -83,10 +82,25 @@ if params[:commit] != nil
         params['id'] = doc[0].css('id').inner_html
       end
     end
-  elsif params[:commit] == 'Modify'
-    params[:selected_id]
-    params[:image]
-    params[:descript]
+  elsif params[:commit] == 'Update'
+    if doc == nil || !!params['id']
+      errorinfo = "Select a product item first"
+    else
+      doc.each { |p|
+        if p.css('id').inner_html == params[:selected_id]
+          params['id'] = params[:selected_id]
+          p.at_css('name').inner_html = params[:name]
+          p.at_css('image').inner_html = params[:image]
+          params[:descript].gsub(/</,'&lt;')
+          params[:descript].gsub(/>/,'&gt;')
+          p.at_css('details').inner_html=params[:descript]
+          file =File.open("products.xml","w+")
+          rootdoc.write_xml_to(file)
+          file.close
+          break
+        end
+      }
+    end
   end
 end
 %>

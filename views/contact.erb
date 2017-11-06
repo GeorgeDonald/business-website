@@ -1,3 +1,8 @@
+<% errorinfo = nil %>
+<% if params[:send] != nil %>
+
+<% end %>
+
 <div class="grid_products">
   <div class="products_list">
     <% itemclass="product_item"
@@ -24,7 +29,7 @@
       <p>e-mail: anyone@anywhere.any</p>
     <% elsif params['id'] == 'email' %>
       <h1>E-Mail us: </h1>
-      <form>
+      <form action="/contact">
         <div class="emailform">
           <label for="email_subject">Subject: </label>
           <input type="text" name="email_subject" value="" />
@@ -35,6 +40,7 @@
         </div>
         <input type="submit" name="send" value="Send">
       </form>
+      <%= "<div class=\"\">#{errorinfo}</div>" %>
     <% end %>
   </div>
 </div>

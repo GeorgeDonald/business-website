@@ -60,13 +60,14 @@ header > * {
   text-align: center;
   width: 160px;
   height: 100%;
+  border-radius: 10px 10px 0 0;
   line-height: calc(120px - 80px); }
   .nav_tag a {
     text-decoration: none;
     color: white; }
 
 .nav_tag_cur {
-  background-color: #3e3ef8; }
+  background-color: #a2a2f8; }
 
 article, footer {
   display: block;
@@ -132,6 +133,8 @@ article {
     margin-left: 20px; }
 
 .emailform {
+  margin-top: 16px;
+  margin-bottom: 16px;
   display: grid;
   grid-template-columns: 80px 1fr; }
 

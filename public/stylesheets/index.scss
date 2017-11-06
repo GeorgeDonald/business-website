@@ -78,6 +78,7 @@ header > * {
   text-align: center;
   width: 160px;
   height: 100%;
+  border-radius: 10px 10px 0 0;
   line-height: calc(#{$headerheight} - #{$headbannerheight});
   a {
     text-decoration: none;
@@ -86,7 +87,7 @@ header > * {
 }
 
 .nav_tag_cur {
-  background-color: $clr_bkgrnd_banner;
+  background-color: $clr_bkgrnd;
 }
 
 article, footer {
@@ -168,6 +169,8 @@ article {
 }
 
 .emailform {
+  margin-top: 16px;
+  margin-bottom: 16px;
   display: grid;
   grid-template-columns: 80px 1fr;
 }

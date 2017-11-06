@@ -1,7 +1,7 @@
 
 <p>Please run "bundle install" in project directory command line first.</p>
 <br/>
-<p>Please apply a SendGrid api key and did this in project directory:</p>
+<p>Please apply a SendGrid api key and do these in project directory:</p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env</p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;echo "sendgrid.env" >> .gitignore</p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;source ./sendgrid.env</p>

@@ -10,6 +10,6 @@
 <p>HOME:</p>
 <p>Products: show products list and when you select one, the details</p>
 <p>Contact: you can select general contact information and email.</p>
-<p style="text-indent: 2em">In email, you can send email.</p>
+<p>&160;&160;&160;&160;In email, you can send email.</p>
 <p>Edit: you can add, delete or update product items.</p>
 <p>      When you done, go to Products to see results.</p>

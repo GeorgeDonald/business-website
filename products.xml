@@ -1,14 +1,9 @@
+<?xml version="1.0"?>
 <products>
   <product>
     <id>1</id>
     <name>Adapter</name>
     <image>/img/adapter.jpg</image>
-    <details>product descriptions</details>
-  </product>
-  <product>
-    <id>2</id>
-    <name>Processor</name>
-    <image>/img/processor.jpg</image>
-    <details>product descriptions</details>
+    <details>asdf asfdas dfasd,fasdf afa; dfjasd;fkajdf;</details>
   </product>
 </products>

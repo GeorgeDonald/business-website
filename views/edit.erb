@@ -1,30 +1,96 @@
-
-<p><%= params[:commit] %></p>
-<p><%= params[:name] %></p>
-<p><%= params[:image] %></p>
-<p><%= params[:descript] %></p>
-
 <%
 doc = nil
 begin
 file = File.open("products.xml")
-doc =  Nokogiri::XML(file)
-doc = doc.xpath("//product")
+rootdoc =  Nokogiri::XML(file)
+doc = rootdoc.xpath("//product")
 if doc.length == 0 then raise 'no product' end
 rescue
-%>
-<p>We have no product yet.</p>
-<p>Click "Edit" to add some products.</p>
-<%
 doc = nil
 end
+file.close
 %>
 
 <%
-  dtl = nil
-  img = nil
-  name = nil
+dtl = nil
+img = nil
+name = nil
+id = nil
 %>
+
+<%
+errorinfo = nil
+if params[:commit] != nil
+  if params[:commit] == 'Add'
+    #add
+    if params[:name].length <1
+      errorinfo = "Name cannot be empty"
+    else
+      if doc == nil
+        rootdoc = Nokogiri::XML("<products></products>")
+      end
+
+      node_pro = rootdoc.at_css("products")
+      node_pro = node_pro.add_child("<product></product>")
+      node_pro = node_pro.at_css("product")
+      doc = rootdoc.xpath("//product")
+
+      id = 1
+      while true do
+        exist = false
+        doc.each_with_index { |p, i|
+          if p.css('id').inner_html.to_i == id
+            exist = true
+            break
+          end
+        }
+        if !exist
+          break
+        else
+          id += 1
+        end
+      end
+
+      node_pro.add_child("<id>#{id}</id>")
+      node_pro.add_child("<name>#{params[:name]}</name>")
+      node_pro.add_child("<image>#{params[:image]}</image>")
+      params[:descript].gsub(/</,'&lt;')
+      params[:descript].gsub(/>/,'&gt;')
+      node_pro.add_child("<details>#{params[:descript]}</details>")
+      params['id'] = id.to_s
+      params['name'] = ""
+
+      file =File.open("products.xml","w+")
+      rootdoc.write_xml_to(file)
+      file.close
+    end
+  elsif params[:commit] == 'Delete'
+    #delete
+    if doc == nil || !!params['id']
+      errorinfo = "Select a product item first"
+    else
+      doc.each { |p|
+        if p.css('id').inner_html == params[:selected_id]
+          p.remove
+          file =File.open("products.xml","w+")
+          rootdoc.write_xml_to(file)
+          file.close
+          break
+        end
+      }
+      doc = rootdoc.xpath("//product")
+      if doc.length > 0
+        params['id'] = doc[0].css('id').inner_html
+      end
+    end
+  elsif params[:commit] == 'Modify'
+    params[:selected_id]
+    params[:image]
+    params[:descript]
+  end
+end
+%>
+
 <div class="grid_products">
   <div class="products_list">
   <% if doc != nil
@@ -36,7 +102,7 @@ end
           dtl = dtl.gsub(/&lt;/,'<')
           dtl = dtl.gsub(/&gt;/,'>')
           name = p.css('name').inner_html
-
+          id = p.css('id').inner_html
           itemclass="product_item_select"
          end %>
       <% item = "<div class=\"#{itemclass}\"><a href=\"/edit?id=#{p.css('id').inner_html}\">
@@ -46,7 +112,7 @@ end
   <% end %>
   </div>
   <div class="products_details">
-    <form>
+    <form action="/edit" method="post">
       <div class="emailform">
         <label for="name">Name: </label>
         <%= "<input type=\"text\" name=\"name\" value=\"#{name}\" />" %>
@@ -62,6 +128,8 @@ end
       <input type="submit" name="commit" value="Add">
       <input type="submit" name="commit" value="Delete">
       <input type="submit" name="commit" value="Update">
+      <%= "<input type=\"hidden\" name=\"selected_id\" value=\"#{id}\">" %>
     </form>
+    <%= "<div class=\"\">#{errorinfo}</div>" %>
   </div>
 </div>

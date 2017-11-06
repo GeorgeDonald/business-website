@@ -131,4 +131,8 @@ article {
   .grid_products .products_details {
     margin-left: 20px; }
 
+.emailform {
+  display: grid;
+  grid-template-columns: 80px 1fr; }
+
 /*# sourceMappingURL=index.css.map */

@@ -25,15 +25,15 @@
     <% elsif params['id'] == 'email' %>
       <h1>E-Mail us: </h1>
       <form>
-      <div class="">
-        <label for="email_subject">Subject: </label>
-        <input type="text" name="email_subject" value="" />
-      </div>
-      <div class="">
-        <label for="email_content">Content: </label>
-        <textarea name="email_content" rows="8" cols="80"></textarea>
-      </div>
-      <input type="submit" name="send" value="Send">
+        <div class="emailform">
+          <label for="email_subject">Subject: </label>
+          <input type="text" name="email_subject" value="" />
+        </div>
+        <div class="emailform">
+          <label for="email_content">Content: </label>
+          <textarea name="email_content" rows="8" cols="80"></textarea>
+        </div>
+        <input type="submit" name="send" value="Send">
       </form>
     <% end %>
   </div>

@@ -1,5 +1,67 @@
-<form class="editform" action="index.html" method="post">
-  <input type="text" name="title" value="">
-  <input type="text" name="article" value="">
-  <input type="button" name="Submit" value="Submit">
-</form>
+
+<p><%= params[:commit] %></p>
+<p><%= params[:name] %></p>
+<p><%= params[:image] %></p>
+<p><%= params[:descript] %></p>
+
+<%
+doc = nil
+begin
+file = File.open("products.xml")
+doc =  Nokogiri::XML(file)
+doc = doc.xpath("//product")
+if doc.length == 0 then raise 'no product' end
+rescue
+%>
+<p>We have no product yet.</p>
+<p>Click "Edit" to add some products.</p>
+<%
+doc = nil
+end
+%>
+
+<%
+  dtl = nil
+  img = nil
+  name = nil
+%>
+<div class="grid_products">
+  <div class="products_list">
+  <% if doc != nil
+     doc.each_with_index { |p, i| %>
+      <% itemclass="product_item"
+        if (params['id'] == nil && i == 0) || (params['id'] == p.css('id').inner_html)
+          img = p.css('image').inner_html
+          dtl = p.css('details').inner_html
+          dtl = dtl.gsub(/&lt;/,'<')
+          dtl = dtl.gsub(/&gt;/,'>')
+          name = p.css('name').inner_html
+
+          itemclass="product_item_select"
+         end %>
+      <% item = "<div class=\"#{itemclass}\"><a href=\"/edit?id=#{p.css('id').inner_html}\">
+        #{p.css('name').inner_html}</a></div>"%>
+      <%= item %>
+    <% } %>
+  <% end %>
+  </div>
+  <div class="products_details">
+    <form>
+      <div class="emailform">
+        <label for="name">Name: </label>
+        <%= "<input type=\"text\" name=\"name\" value=\"#{name}\" />" %>
+      </div>
+      <div class="emailform">
+        <label for="image">Image: </label>
+        <%= "<input type=\"text\" name=\"image\" value=\"#{img}\" />" %>
+      </div>
+      <div class="emailform">
+        <label for="descript">Description: </label>
+        <%= "<textarea name=\"descript\" rows=\"8\" cols=\"80\">#{dtl}</textarea>" %>
+      </div>
+      <input type="submit" name="commit" value="Add">
+      <input type="submit" name="commit" value="Delete">
+      <input type="submit" name="commit" value="Update">
+    </form>
+  </div>
+</div>

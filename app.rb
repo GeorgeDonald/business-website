@@ -17,3 +17,7 @@ end
 get '/edit' do
   erb :edit
 end
+
+post '/edit' do
+  erb :edit
+end
